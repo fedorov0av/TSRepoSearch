@@ -23,11 +23,28 @@ a:hover {
 }
 
 body {
+  background: linear-gradient(135deg, 
+    #ff7e5f, #feb47b, 
+    #6a11cb, #2575fc, 
+    #00bcd4, #ff9800
+  );
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  background-size: 300% 300%;
+  animation: gradientAnimation 15s ease infinite;
+  height: 100vh;
+  margin: 0;
+  background-attachment: fixed;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 h1 {

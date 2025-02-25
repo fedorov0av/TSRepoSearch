@@ -1,6 +1,6 @@
 import { useState } from "react";
-import viteLogo from "./assets/ts.svg";
-import "./App.css";
+import viteLogo from "./assets/images/ts.svg";
+import "./styles/App.css";
 
 function App() {
   const [firstName, setFirstName] = useState("");
