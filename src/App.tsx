@@ -1,34 +1,18 @@
-import { useState } from "react";
-import viteLogo from "./assets/images/ts.svg";
 import "./styles/App.css";
 import RepoList from "./components/RepList";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
-  const [firstName, setFirstName] = useState("");
   return (
     <>
-      <div>
-        <a target="_blank">
-          <img
-            src={viteLogo}
-            className="logo"
-            alt="Vite logo"
-          />
-        </a>
+      <div className="app-container">
+        <Header />
+        <div className="content">
+          <RepoList />
+        </div>
+        <Footer />
       </div>
-      <h1>TSRepoSearch</h1>
-      <div className="card">
-        <p>Введите название репозитория и нажмите Enter</p>
-        <input
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        ></input>
-        <p>{firstName}</p>
-        <RepoList />
-      </div>
-      <p className="read-the-docs">
-        Поиск репозиториев на GitHub не был никогда таким легким, как сейчас...
-      </p>
     </>
   );
 }

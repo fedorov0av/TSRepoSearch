@@ -1,13 +1,20 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  height: 100%;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  height: 7em;
+  padding: 1em;
   will-change: filter;
   transition: filter 300ms;
 }
@@ -30,14 +37,6 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
 input {
   padding: 10px;
   font-size: 16px;
@@ -45,23 +44,29 @@ input {
   margin-bottom: 20px;
 }
 
-.repo-card {
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 10px;
+.header {
+  z-index: 1000;
 }
 
-.repo-list {
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.app-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  height: 100%;
 }
 
-.repo-card h3 {
-  margin: 0;
-}
-
-.repo-card a {
-  color: #0366d6;
-  text-decoration: none;
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 50px;
 }
