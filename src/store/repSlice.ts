@@ -40,7 +40,11 @@ export const fetchRepos = createAsyncThunk(
 const repSlice = createSlice({
   name: "repos",
   initialState,
-  reducers: {},
+  reducers: {
+    clearRepos: (state) => {
+      state.repos = [];
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchRepos.pending, (state) => {
@@ -58,4 +62,5 @@ const repSlice = createSlice({
   },
 });
 
+export const { clearRepos } = repSlice.actions;
 export default repSlice.reducer;

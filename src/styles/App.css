@@ -40,15 +40,28 @@ html {
 input {
   padding: 10px;
   font-size: 16px;
-  width: 100%;
+  width: 80vh;
   margin-bottom: 20px;
+  margin-right: 5px;
+}
+
+button {
+  width: 10vh;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .header {
+  align-items: center;
+  justify-content: center;
+  height: 13vh;
+  display: flex;
   z-index: 1000;
 }
 
 .footer {
+  height: 3vh;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -65,8 +78,20 @@ input {
   height: 100%;
 }
 
+.search {
+  height: 1vh;
+  flex-direction: column;
+  padding-bottom: 50px;
+}
+
 .content {
-  flex: 1;
+  height: 65vh;
+  flex-direction: column;
   overflow-y: auto;
   padding-bottom: 50px;
+}
+
+thead {
+  position: sticky;
+  top: 0;
 }

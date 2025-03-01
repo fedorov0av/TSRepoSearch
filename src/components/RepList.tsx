@@ -1,40 +1,13 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchRepos } from "../store/repSlice";
-import { AppDispatch } from "../store/store";
+import React from "react";
+import { useSelector } from "react-redux";
 
 const RepoList: React.FC = () => {
-  const [query, setQuery] = useState<string>("");
-  const dispatch: AppDispatch = useDispatch();
   const { repos, loading, error } = useSelector((state: any) => state.repos);
 
-  // Функция для обработки события изменения текста в input
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
-  };
-
-  // Функция для обработки события нажатия клавиши
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      // Запускаем поиск только при нажатии Enter
-      if (query) {
-        dispatch(fetchRepos(query));
-      }
-    }
-  };
-
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Поиск репозитория"
-        value={query}
-        onChange={handleChange} // только сохраняет состояние
-        onKeyDown={handleKeyDown} // запускает поиск при нажатии Enter
-      />
+    <div className="content">
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-
       {!loading && !error && repos.length > 0 && (
         <table className="repo-table">
           <thead>
