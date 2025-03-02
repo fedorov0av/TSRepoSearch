@@ -4,7 +4,7 @@ import "../styles/App.css";
 
 const Header: React.FC = () => {
   return (
-    <div className="header">
+    <header className="header">
       <a
         target="_blank"
         rel="noopener noreferrer"
@@ -16,7 +16,7 @@ const Header: React.FC = () => {
         />
       </a>
       <h1>TSRepoSearch</h1>
-    </div>
+    </header>
   );
 };
 export default Header;

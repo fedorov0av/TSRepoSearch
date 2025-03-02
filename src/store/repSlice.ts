@@ -12,12 +12,16 @@ interface Rep {
 
 interface RepState {
   repos: Rep[];
+  page: number;
+  last_query: string | null;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: RepState = {
   repos: [],
+  page: 0,
+  last_query: "",
   loading: false,
   error: null,
 };
@@ -25,8 +29,9 @@ const initialState: RepState = {
 export const fetchRepos = createAsyncThunk(
   "repos/fetchRepos",
   async (query: string) => {
+    const GITHIB_API_URL: string = "https://api.github.com/search/repositories";
     const response = await fetch(
-      `https://api.github.com/search/repositories?q=${query}&sort=stars&order=desc`
+      `${GITHIB_API_URL}?q=${query}&sort=stars&order=desc&per_page=30&page=0`
     );
 
     if (!response.ok) {
@@ -44,6 +49,18 @@ const repSlice = createSlice({
     clearRepos: (state) => {
       state.repos = [];
     },
+    nextPage: (state) => {
+      state.page += 1;
+    },
+    clearPage: (state) => {
+      state.page = 0;
+    },
+    setLastQuery: (state, action) => {
+      state.last_query = action.payload;
+    },
+    clearLastQuery: (state) => {
+      state.last_query = "";
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -52,7 +69,7 @@ const repSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchRepos.fulfilled, (state, action) => {
-        state.repos = action.payload;
+        state.repos.push(...action.payload);
         state.loading = false;
       })
       .addCase(fetchRepos.rejected, (state, action) => {
@@ -62,5 +79,6 @@ const repSlice = createSlice({
   },
 });
 
-export const { clearRepos } = repSlice.actions;
+export const { clearRepos, nextPage, clearPage, setLastQuery, clearLastQuery } =
+  repSlice.actions;
 export default repSlice.reducer;

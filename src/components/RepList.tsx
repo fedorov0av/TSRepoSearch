@@ -30,7 +30,7 @@ const RepoList: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    View on GitHub
+                    Перейти в GitHub
                   </a>
                 </td>
               </tr>

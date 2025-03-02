@@ -15,10 +15,17 @@ const Search: React.FC = () => {
     }
   };
 
+  const handleSearch = () => {
+    if (query) {
+      dispatch(clearRepos());
+      dispatch(fetchRepos(query));
+    }
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       if (query) {
-        dispatch(fetchRepos(query));
+        handleSearch();
       }
     }
   };
@@ -35,7 +42,7 @@ const Search: React.FC = () => {
       <button
         onClick={() => {
           if (query) {
-            dispatch(fetchRepos(query));
+            handleSearch();
           }
         }}
       >
