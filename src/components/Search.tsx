@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRepos, clearRepos } from "../store/repSlice";
-import { AppDispatch } from "../store/store";
+import { AppDispatch, RootState } from "../store/store";
 
 const Search: React.FC = () => {
   const [query, setQuery] = useState<string>("");
   const dispatch: AppDispatch = useDispatch();
-  const { repos } = useSelector((state: any) => state.repos);
+  const { repos } = useSelector((state: RootState) => state.repos);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);

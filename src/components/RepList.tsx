@@ -1,8 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import { Rep } from "../store/repSlice";
 
 const RepoList: React.FC = () => {
-  const { repos, loading, error } = useSelector((state: any) => state.repos);
+  const { repos, loading, error } = useSelector(
+    (state: RootState) => state.repos
+  );
 
   return (
     <div className="content">
@@ -19,7 +23,7 @@ const RepoList: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {repos.map((repo: any) => (
+            {repos.map((repo: Rep) => (
               <tr key={repo.id}>
                 <td>{repo.name}</td>
                 <td>{repo.owner.login}</td>

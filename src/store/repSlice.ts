@@ -31,7 +31,7 @@ export const fetchRepos = createAsyncThunk(
   async (query: string) => {
     const GITHIB_API_URL: string = "https://api.github.com/search/repositories";
     const response = await fetch(
-      `${GITHIB_API_URL}?q=${query}&sort=stars&order=desc&per_page=30&page=0`
+      `${GITHIB_API_URL}?q=${query}&sort=stars&order=desc`
     );
 
     if (!response.ok) {
@@ -82,3 +82,4 @@ const repSlice = createSlice({
 export const { clearRepos, nextPage, clearPage, setLastQuery, clearLastQuery } =
   repSlice.actions;
 export default repSlice.reducer;
+export type { Rep };
